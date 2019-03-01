@@ -1,0 +1,12 @@
+option('hello',
+	type: 'boolean',
+	value: 'false',
+	description: 'Enable hello message')
+option('goodbye',
+	type: 'boolean',
+	value: 'false',
+	description: 'Enable goodbye message')
+option('gtk',
+	type: 'boolean',
+	value: 'false',
+	description: 'Enable GTK GUI')
