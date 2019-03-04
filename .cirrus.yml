@@ -1,0 +1,23 @@
+freebsd11_task:
+        freebsd_instance:
+                image: freebsd-11-2-release-amd64
+        install_script: pkg install -y gtk30
+        autoconf_script:
+                - autoreconf -i
+                - ./configure --with-hello --with-gtk
+                - make 
+        meson_script: 
+                - meson -Dhello=true -Dgoodbye=false -Dgtk=true _build
+                - ninja -C _build
+
+freebsd12_task:
+        freebsd_instance:
+                image: freebsd-12-0-release-amd64
+        install_script: pkg install -y gtk30
+        autoconf_script:
+                - autoreconf -i
+                - ./configure --with-hello --with-gtk
+                - make 
+        meson_script: 
+                - meson -Dhello=true -Dgoodbye=false -Dgtk=true _build
+                - ninja -C _build
