@@ -1,7 +1,10 @@
 freebsd11_task:
         freebsd_instance:
                 image: freebsd-11-2-release-amd64
-        install_script: pkg install -y gtk30
+        install_script:
+                - sed -i.bak -e 's,pkg+http://pkg.FreeBSD.org/\${ABI}/quarterly,pkg+http://pkg.FreeBSD.org/\${ABI}/latest,' /etc/pkg/FreeBSD.conf
+                - pkg upgrade -y
+                - pkg install -y autoconf automake libtool pkconfig meson ninja gtk3
         autoconf_script:
                 - autoreconf -i
                 - ./configure --with-hello --with-gtk
@@ -13,7 +16,10 @@ freebsd11_task:
 freebsd12_task:
         freebsd_instance:
                 image: freebsd-12-0-release-amd64
-        install_script: pkg install -y gtk30
+        install_script:
+                - sed -i.bak -e 's,pkg+http://pkg.FreeBSD.org/\${ABI}/quarterly,pkg+http://pkg.FreeBSD.org/\${ABI}/latest,' /etc/pkg/FreeBSD.conf
+                - pkg upgrade -y
+                - pkg install -y autoconf automake libtool pkconfig meson ninja gtk3
         autoconf_script:
                 - autoreconf -i
                 - ./configure --with-hello --with-gtk
